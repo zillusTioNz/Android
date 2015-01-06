@@ -135,7 +135,7 @@
             android:layout_width="39dp"
             android:layout_height="38dp"
             android:layout_marginLeft="14dp"
-            android:onClick="stop"
+            android:onClick="stopPlay"
             android:src="@drawable/stop" />
 
         <ImageButton

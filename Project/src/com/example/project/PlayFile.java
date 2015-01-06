@@ -163,7 +163,7 @@ public class PlayFile extends Activity {
 		
 		//initialize views
 		initializeViews();
-		mediaPlayer.start();
+		
 		timeElapsed = mediaPlayer.getCurrentPosition();
 		seekbar.setProgress((int) timeElapsed);
 		durationHandler.postDelayed(updateSeekBarTime, 100);
@@ -188,7 +188,10 @@ public class PlayFile extends Activity {
 	                }
 	            }
 	    });
-	}
+		
+		mediaPlayer.start();
+		
+	}//end onCreate
 	
 	public void initializeViews(){
 		songName = (TextView) findViewById(R.id.songName);
@@ -282,8 +285,8 @@ public class PlayFile extends Activity {
 		}
 	}
 	
-	public void stop(View view){
-		try {
+	public void stopPlay(View view){
+		/*try {
 			if (mediaPlayer != null) {
 				mediaPlayer.stop();
 				mediaPlayer.release();
@@ -292,6 +295,23 @@ public class PlayFile extends Activity {
 				
 				Toast.makeText(getApplicationContext(), "Stop playing the recording...", Toast.LENGTH_SHORT).show();
 			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}*/
+		try {
+			mediaPlayer.stop();
+			mediaPlayer = new MediaPlayer();
+			try {
+				mediaPlayer.setDataSource(fileName);
+				mediaPlayer.prepare();
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			
+			seekbar.setProgress(0);
+			Toast.makeText(getApplicationContext(), "Stop playing the recording...", Toast.LENGTH_SHORT).show();
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
