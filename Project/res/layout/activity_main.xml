@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <Button
+            android:id="@+id/btnStop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/btnStart"
+            android:layout_alignBottom="@+id/btnStart"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:text="@string/btnStop"
+            android:width="150dp" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/btnStart"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/ic_launcher" />
+
+        <ListView
+            android:id="@+id/listData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btnStart"
+            android:layout_alignLeft="@+id/btnStart"
+            android:layout_alignRight="@+id/btnStop"
+            android:listSelector="@color/orange"
+            android:layout_below="@+id/imageView1" >
+			
+        </ListView>
+
+        <TextView
+            android:id="@+id/txtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageView1"
+            android:layout_alignRight="@+id/listData"
+            android:layout_alignTop="@+id/imageView1"
+            android:text="@string/txtTime"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:layout_marginRight="17dp"
+            android:layout_toLeftOf="@+id/btnStop"
+            android:text="@string/btnStart"
+            android:width="150dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>
