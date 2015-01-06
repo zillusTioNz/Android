@@ -70,15 +70,6 @@
         android:layout_gravity="center"
         android:text="@string/hello_world" />
 
-    <ImageView
-        android:id="@+id/mp3Image"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="30dp"
-        android:background="#ffffff"
-        android:padding="30dp"
-        android:src="@drawable/music" />
-
     <TextView
         android:id="@+id/songDuration"
         android:layout_width="wrap_content"
@@ -100,48 +91,48 @@
 
         <ImageButton
             android:id="@+id/media_rew"
-            android:layout_width="39dp"
-            android:layout_height="38dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
             android:onClick="rewind"
             android:src="@android:drawable/ic_media_rew" />
 
         <ImageButton
             android:id="@+id/media_pause"
-            android:layout_width="39dp"
-            android:layout_height="38dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
             android:onClick="pause"
             android:src="@android:drawable/ic_media_pause" />
 
         <ImageButton
             android:id="@+id/media_play"
-            android:layout_width="39dp"
-            android:layout_height="38dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
             android:onClick="play"
             android:src="@android:drawable/ic_media_play" />
 
         <ImageButton
-            android:id="@+id/media_ff"
-            android:layout_width="39dp"
-            android:layout_height="38dp"
-            android:layout_marginLeft="14dp"
-            android:onClick="forward"
-            android:src="@android:drawable/ic_media_ff" />
-
-        <ImageButton
             android:id="@+id/media_stop"
-            android:layout_width="39dp"
-            android:layout_height="38dp"
+            android:layout_width="52dp"
+            android:layout_height="48dp"
             android:layout_marginLeft="14dp"
             android:onClick="stop"
             android:src="@drawable/stop" />
 
         <ImageButton
+            android:id="@+id/media_ff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:onClick="forward"
+            android:src="@android:drawable/ic_media_ff" />
+
+        <ImageButton
             android:id="@+id/delete"
-            android:layout_width="39dp"
-            android:layout_height="38dp"
+            android:layout_width="54dp"
+            android:layout_height="48dp"
             android:layout_marginLeft="14dp"
             android:onClick="deleteFileRecord"
             android:src="@drawable/trash" />
