@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory android:title="First Category" android:key="first_category">
+        <CheckBoxPreference android:key="perform_updates" android:summary="Enable or disable data updates" android:title="Enable updates" android:defaultValue="true"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Second Category" android:key="second_category">
+        <EditTextPreference android:dialogMessage="Provide a message" android:key="welcome_message" android:dialogTitle="Welcome Message" android:summary="Define the welcome message to be shown" android:title="Welcome message" android:defaultValue="Default welcome message"/>
+    </PreferenceCategory>
+    
+
+</PreferenceScreen>

@@ -158,6 +158,7 @@ public class PlayFile extends Activity {
 
 		//set the layout of the Activity
 		setContentView(R.layout.activity_playfile);
+		setTitle(R.string.playtitle);
 		Intent i = getIntent();
 		fileName =  i.getStringExtra("fileName");
 		

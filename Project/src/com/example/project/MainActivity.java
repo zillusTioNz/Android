@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.preference.PreferenceActivity;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -29,7 +30,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity{
+public class MainActivity extends Activity {
 	
 	//============================== Properties ===============================
 	
@@ -55,6 +56,7 @@ public class MainActivity extends Activity{
 	@Override
 	protected void onCreate(Bundle saveInstanceState){
 		super.onCreate(saveInstanceState);
+		//addPreferencesFromResource(R.xml.preferences);
 		setContentView(R.layout.activity_main);		
 		txtTime = (TextView)findViewById(R.id.txtTime);
 		
@@ -229,3 +231,4 @@ public class MainActivity extends Activity{
    }
 	
 }// end Class
+
