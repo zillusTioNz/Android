@@ -8,60 +8,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <Button
-            android:id="@+id/btnStop"
+        <TextView
+            android:id="@+id/txtTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/btnStart"
-            android:layout_alignBottom="@+id/btnStart"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:text="@string/btnStop"
-            android:width="150dp" />
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/btnStart"
+            android:layout_marginRight="21dp"
+            android:layout_marginTop="18dp"
+            android:text="@string/txtTime"
+            android:textSize="40sp" />
 
-        <ListView
-            android:id="@+id/listData"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnPlayList"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/btnStart"
-            android:layout_alignLeft="@+id/btnStart"
+            android:layout_alignLeft="@+id/btnStop"
             android:layout_alignRight="@+id/btnStop"
-            android:layout_alignTop="@+id/imageView1"
-            android:listSelector="@color/orange" >
-			
-        </ListView>
+            android:layout_below="@+id/btnStop"
+            android:text="@string/btnPlayList" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/mic" />
 
         <Button
             android:id="@+id/btnStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="12dp"
-            android:layout_marginRight="17dp"
-            android:layout_toLeftOf="@+id/btnStop"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/txtTime"
+            android:layout_marginTop="15dp"
             android:text="@string/btnStart"
             android:width="150dp" />
 
-        <ImageView
-            android:id="@+id/imageView1"
+        <Button
+            android:id="@+id/btnStop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/txtTime"
-            android:layout_marginRight="52dp"
-            android:layout_marginTop="18dp"
-            android:src="@drawable/ic_launcher" />
-
-        <TextView
-            android:id="@+id/txtTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView1"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_toLeftOf="@+id/listData"
-            android:text="@string/txtTime"
-            android:textSize="40sp" />
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/btnStart"
+            android:text="@string/btnStop"
+            android:width="150dp" />
 
     </RelativeLayout>
 
