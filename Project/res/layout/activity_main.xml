@@ -8,43 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/btnStart"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="18dp"
-            android:src="@drawable/ic_launcher" />
-
-        <TextView
-            android:id="@+id/txtTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView1"
-            android:layout_alignRight="@+id/btnStop"
-            android:layout_alignTop="@+id/imageView1"
-            android:text="@string/txtTime"
-            android:textSize="40sp" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/mic" />
-
-        <Button
-            android:id="@+id/btnStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="58dp"
-            android:layout_toLeftOf="@+id/txtTime"
-            android:text="@string/btnStart"
-            android:width="150dp" />
-
         <Button
             android:id="@+id/btnStop"
             android:layout_width="wrap_content"
@@ -63,6 +26,33 @@
             android:layout_alignParentRight="true"
             android:layout_below="@+id/btnStop"
             android:text="@string/btnPlayList" />
+
+        <TextView
+            android:id="@+id/txtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/txtTime"
+            android:textSize="40sp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/mic" />
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/imageView2"
+            android:text="@string/btnStart"
+            android:width="150dp" />
 
     </RelativeLayout>
 
