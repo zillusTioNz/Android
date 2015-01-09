@@ -3,7 +3,7 @@
     <string name="app_name">Project</string>
     <string name="btnStart">Start</string>
     <string name="btnStop">Stop</string>
-    <string name="txtTime">00:00:00</string>
+    <string name="txtTime">00:00</string>
     <color name="orange">#FFBF00</color>
     <string name="btnPlay">Play</string>
     <string name="btnPause">Puase</string>
@@ -11,6 +11,11 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Now Playing:</string>
     <string name="inital_Time">0 min, 0 sec</string>
+    <string name="mediaStop">Stop</string>
+    <string name="enable_update">Enable Updates</string>
+    <string name="save">Save</string>
+    <string name="setting">Setting</string>
+    <string name="playtitle">Playing</string>
 
     
 </resources>

@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.preference.PreferenceActivity;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -29,7 +30,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity{
+public class MainActivity extends Activity {
 	
 	//============================== Properties ===============================
 	
@@ -55,6 +56,7 @@ public class MainActivity extends Activity{
 	@Override
 	protected void onCreate(Bundle saveInstanceState){
 		super.onCreate(saveInstanceState);
+		//addPreferencesFromResource(R.xml.preferences);
 		setContentView(R.layout.activity_main);		
 		txtTime = (TextView)findViewById(R.id.txtTime);
 		
@@ -197,10 +199,10 @@ public class MainActivity extends Activity{
 			   int secs = (int) (updatedTime / 1000);
 			   int mins = secs / 60;
 			   secs = secs % 60;
-			   int milliseconds = (int) (updatedTime % 1000);
-			   txtTime.setText("" + mins + ":"
-					   + String.format("%02d", secs) + ":"
-					   + String.format("%03d", milliseconds));
+			   //int milliseconds = (int) (updatedTime % 1000);
+			   txtTime.setText("" + String.format("%02d", mins) + ":"
+					   + String.format("%02d", secs)); //+ ":"
+					   //+ String.format("%03d", milliseconds));
 			   customHandler.postDelayed(this, 0);
 		   }
 	};//end timer
@@ -229,3 +231,4 @@ public class MainActivity extends Activity{
    }
 	
 }// end Class
+

@@ -117,6 +117,7 @@ public class PlayFile extends Activity {
 }
 */
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import android.app.Activity;
@@ -127,6 +128,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PlayFile extends Activity {
 
@@ -139,17 +141,30 @@ public class PlayFile extends Activity {
 	private String fileName;
 	
 	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		try {
+			mediaPlayer.stop();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		Intent setIntent = new Intent(this, MainActivity.class);
+		startActivity(setIntent);
+	}
+
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		//set the layout of the Activity
 		setContentView(R.layout.activity_playfile);
+		setTitle(R.string.playtitle);
 		Intent i = getIntent();
 		fileName =  i.getStringExtra("fileName");
 		
 		//initialize views
 		initializeViews();
-		mediaPlayer.start();
+		
 		timeElapsed = mediaPlayer.getCurrentPosition();
 		seekbar.setProgress((int) timeElapsed);
 		durationHandler.postDelayed(updateSeekBarTime, 100);
@@ -174,7 +189,10 @@ public class PlayFile extends Activity {
 	                }
 	            }
 	    });
-	}
+		
+		mediaPlayer.start();
+		
+	}//end onCreate
 	
 	public void initializeViews(){
 		songName = (TextView) findViewById(R.id.songName);
@@ -256,5 +274,48 @@ public class PlayFile extends Activity {
 				
 			}
 		}
-
+	
+	public void deleteFileRecord(View view){
+		try {
+			File file = new File(fileName);
+			if (file.delete()) {
+				Toast.makeText(getApplicationContext(), "Delete complete", Toast.LENGTH_SHORT).show();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	public void stopPlay(View view){
+		/*try {
+			if (mediaPlayer != null) {
+				mediaPlayer.stop();
+				mediaPlayer.release();
+				
+				seekbar.setProgress((int) finalTime);
+				
+				Toast.makeText(getApplicationContext(), "Stop playing the recording...", Toast.LENGTH_SHORT).show();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}*/
+		try {
+			mediaPlayer.stop();
+			mediaPlayer = new MediaPlayer();
+			try {
+				mediaPlayer.setDataSource(fileName);
+				mediaPlayer.prepare();
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			
+			seekbar.setProgress(0);
+			Toast.makeText(getApplicationContext(), "Stop playing the recording...", Toast.LENGTH_SHORT).show();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
 }
