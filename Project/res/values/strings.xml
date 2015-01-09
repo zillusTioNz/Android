@@ -3,7 +3,7 @@
     <string name="app_name">Project</string>
     <string name="btnStart">Start</string>
     <string name="btnStop">Stop</string>
-    <string name="txtTime">00:00:00</string>
+    <string name="txtTime">00:00</string>
     <color name="orange">#FFBF00</color>
     <string name="btnPlay">Play</string>
     <string name="btnPause">Puase</string>

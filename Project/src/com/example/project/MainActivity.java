@@ -199,10 +199,10 @@ public class MainActivity extends Activity {
 			   int secs = (int) (updatedTime / 1000);
 			   int mins = secs / 60;
 			   secs = secs % 60;
-			   int milliseconds = (int) (updatedTime % 1000);
-			   txtTime.setText("" + mins + ":"
-					   + String.format("%02d", secs) + ":"
-					   + String.format("%03d", milliseconds));
+			   //int milliseconds = (int) (updatedTime % 1000);
+			   txtTime.setText("" + String.format("%02d", mins) + ":"
+					   + String.format("%02d", secs)); //+ ":"
+					   //+ String.format("%03d", milliseconds));
 			   customHandler.postDelayed(this, 0);
 		   }
 	};//end timer
