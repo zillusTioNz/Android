@@ -67,6 +67,16 @@ public class SettingActivity extends Activity implements OnClickListener{
 		Editor editor = sharedPreferences.edit();
 		editor.putBoolean(key, value);
 		editor.commit();
+
+		
+		/*btnBack.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});*/
 	}
 	
 }
