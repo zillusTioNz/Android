@@ -26,6 +26,7 @@
         
         <activity android:name=".PlayFile"></activity>
         <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".PlayList"></activity>
     </application>
 
 </manifest>
