@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">Project</string>
-    <string name="btnStart">Start</string>
+    <string name="btnStart">Record</string>
     <string name="btnStop">Stop</string>
     <string name="txtTime">00:00</string>
     <color name="orange">#FFBF00</color>
@@ -19,6 +19,9 @@
     <string name="playtitle">Playing</string>
 
     <string name="btnPlayList">Play list</string>
+    <string name="dialog">Are you delete?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 
     
 </resources>

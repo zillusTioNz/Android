@@ -136,7 +136,7 @@
             android:layout_height="38dp"
             android:layout_marginLeft="14dp"
             android:onClick="stopPlay"
-            android:src="@drawable/stop" />
+            android:src="@drawable/ic_media_stop" />
 
         <ImageButton
             android:id="@+id/delete"
@@ -144,7 +144,8 @@
             android:layout_height="38dp"
             android:layout_marginLeft="14dp"
             android:onClick="deleteFileRecord"
-            android:src="@drawable/trash" />
+            android:enabled="false"
+            android:src="@drawable/ic_menu_block" />
 
     </LinearLayout>
 
