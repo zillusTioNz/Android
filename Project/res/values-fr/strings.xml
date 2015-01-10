@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">Project</string>
+    <string name="app_name">Sound Recorder</string>
     <string name="btnStart">Enregistrer</string>
     <string name="btnStop">Arreter</string>
     <string name="txtTime">00:00</string>
@@ -19,6 +19,7 @@
     <string name="dialog">Voulez vous supprimer cet élémnt ?</string>
     <string name="ok">OK</string>
     <string name="cancel">Annuler</string>
+    <string name="playlist_title">Jouerliste</string>
 
     
 </resources>

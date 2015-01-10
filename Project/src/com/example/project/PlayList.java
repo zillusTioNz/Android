@@ -24,7 +24,8 @@ public class PlayList extends Activity{
 	private MediaPlayer myPlayer;
 	protected void onCreate(Bundle saveInstanceState){
 		super.onCreate(saveInstanceState);
-		setContentView(R.layout.activity_playlist);		
+		setContentView(R.layout.activity_playlist);
+		setTitle(R.string.playlist_title);
 		
 		listData = (ListView) findViewById(R.id.listData);
 		getDataFromSDCard();

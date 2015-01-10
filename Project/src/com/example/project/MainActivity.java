@@ -72,8 +72,10 @@ public class MainActivity extends Activity {
 		// TODO Auto-generated method stub
 		setContentView(R.layout.activity_main);		
 		txtTime = (TextView)findViewById(R.id.txtTime);
-		// Start Button
+		//Button
 		btnStart = (Button)findViewById(R.id.btnStart);
+		btnStop = (Button)findViewById(R.id.btnStop);
+		
 		btnStart.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -82,10 +84,12 @@ public class MainActivity extends Activity {
 				customHandler.postDelayed(updateTimerThread, 0);
 				
 				startRecord(v);
+				btnStart.setEnabled(false);
+				btnStop.setEnabled(true);
 			}
 		});
 		
-		btnStop = (Button)findViewById(R.id.btnStop);
+		
 		btnStop.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -95,6 +99,8 @@ public class MainActivity extends Activity {
 	  			customHandler.removeCallbacks(updateTimerThread);
 	  			
 				stopRecord(v);
+				btnStart.setEnabled(true);
+				btnStop.setEnabled(false);
 			}
 		});
 		
@@ -106,29 +112,6 @@ public class MainActivity extends Activity {
 				startActivity(i);
 			}
 		});
-		
-		/*
-		listData = (ListView) findViewById(R.id.listData);
-		getDataFromSDCard();
-		listData.setOnItemClickListener(new OnItemClickListener() {
-		public void onItemClick(AdapterView<?> parent, View view,int position, long id) 
-			{
-			
-				String selectedFromList = (listData.getItemAtPosition(position).toString());
-				
-				if(myPlayer != null)
-					myPlayer.stop();
-				play(Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+selectedFromList);
-				
-			
-			
-				Intent i = new Intent(MainActivity.this, PlayFile.class);
-				i.putExtra("fileName", Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+selectedFromList);
-				startActivity(i);
-			
-			}
-		});
-		*/
 		
 	}
 
@@ -142,9 +125,12 @@ public class MainActivity extends Activity {
 		android.content.res.Configuration conf = res.getConfiguration();
 		String lang;
 		String country;
-		if (str_value.contains("Fran�ais")) {
+		if (str_value.contains("Français")) {
 			lang = "fr";
 			country = "FR";	
+		}else if (str_value.contains("ไทย")) {
+			lang = "th";
+			country = "TH";	
 		}else {
 			lang = "en";
 			country = "GB";		
@@ -182,9 +168,6 @@ public class MainActivity extends Activity {
 	        // prepare() fails
 	        e.printStackTrace();
 	    }
-		btnStart.setEnabled(false);
-		btnStop.setEnabled(true);
-		
 	}// end of start method
 	
 	public void stopRecord(View v){

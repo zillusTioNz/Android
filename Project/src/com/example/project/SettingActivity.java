@@ -44,12 +44,15 @@ public class SettingActivity extends Activity implements OnClickListener{
 		final String str_value = sharedPreferences.getString("Spinner", "English");
 		List list_languages = new ArrayList();	
 		list_languages.add("English");
-		list_languages.add("Fran�ais");
+		list_languages.add("Français");
+		list_languages.add("ไทย");
 		ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, list_languages);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		Spinner.setAdapter(adapter);
-		if (str_value.contains("Fran�ais")) {
+		if (str_value.contains("Français")) {
 			Spinner.setSelection(1);
+		}else if (str_value.contains("ไทย")) {
+			Spinner.setSelection(2);
 		}else {
 			Spinner.setSelection(0);
 		}
@@ -57,8 +60,10 @@ public class SettingActivity extends Activity implements OnClickListener{
 		{
 			@Override
 			public void onItemSelected(AdapterView adapter, View v, int postion, long lng) {
-				if (adapter.getItemAtPosition(postion).toString().contains("Fran�ais")) {
+				if (adapter.getItemAtPosition(postion).toString().contains("Français")) {
 					button.setText("Sauvegarder");
+				}else if (adapter.getItemAtPosition(postion).toString().contains("ไทย")) {
+					button.setText("บันทึก");	
 				}else {
 					button.setText("Save");	
 				}
@@ -87,12 +92,15 @@ public class SettingActivity extends Activity implements OnClickListener{
 
 		String lang;
 		String country;
-		if (value.contains("Fran�ais")) {
+		if (value.contains("Français")) {
 			lang = "fr";
 			country = "FR";	
 			button.setText("Sauvegarder");
-		}
-		else {
+		}else if (value.contains("ไทย")) {
+			lang = "th";
+			country = "TH";	
+			button.setText("บันทึก");
+		}else {
 			lang = "en";
 			country = "GB";		
 			button.setText("Save");	
