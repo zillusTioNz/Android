@@ -309,7 +309,7 @@ public class PlayFile extends Activity implements Dialog.dialogDoneListener{
 		try {
 			File file = new File(fileName);
 			if (file.delete()) {
-				Toast.makeText(getApplicationContext(), "Delete complete...", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "Delete file complete...", Toast.LENGTH_SHORT).show();
 				Intent i = new Intent(getApplicationContext(), PlayList.class);
 				startActivity(i);
 			}
