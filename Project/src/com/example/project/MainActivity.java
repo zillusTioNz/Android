@@ -182,6 +182,9 @@ public class MainActivity extends Activity {
 	        // prepare() fails
 	        e.printStackTrace();
 	    }
+		btnStart.setEnabled(false);
+		btnStop.setEnabled(true);
+		
 	}// end of start method
 	
 	public void stopRecord(View v){
@@ -204,6 +207,9 @@ public class MainActivity extends Activity {
 			// no valid audio/video data has been received
 			e.printStackTrace();
 		}
+		btnStart.setEnabled(true);
+		btnStop.setEnabled(false);
+		
 	}// end of stop method
  
 	/*
@@ -241,6 +247,7 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 		}
+		
 		
 	}
 	

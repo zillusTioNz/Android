@@ -17,8 +17,10 @@
     <string name="save">Save</string>
     <string name="setting">Setting</string>
     <string name="playtitle">Playing</string>
-
     <string name="btnPlayList">Play list</string>
+    <string name="dialog">Are you delete?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 
     
 </resources>
