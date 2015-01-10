@@ -15,7 +15,7 @@ public class SettingActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setting);
 		
-		btnBack = (Button)findViewById(R.id.button1);
+		btnBack = (Button)findViewById(R.id.btnPlayList);
 		/*btnBack.setOnClickListener(new OnClickListener() {
 			
 			@Override

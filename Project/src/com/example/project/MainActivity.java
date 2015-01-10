@@ -40,6 +40,7 @@ public class MainActivity extends Activity{
 	
 	private Button btnStart;
 	private Button btnStop;
+	private Button btnPlayList;
 	private ListView listData;
 	
 	private TextView txtTime;
@@ -84,6 +85,16 @@ public class MainActivity extends Activity{
 			}
 		});
 		
+		btnPlayList = (Button)findViewById(R.id.btnPlayList);
+		btnPlayList.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(MainActivity.this, PlayList.class);				
+				startActivity(i);
+			}
+		});
+		
+		/*
 		listData = (ListView) findViewById(R.id.listData);
 		getDataFromSDCard();
 		listData.setOnItemClickListener(new OnItemClickListener() {
@@ -91,11 +102,11 @@ public class MainActivity extends Activity{
 			{
 			
 				String selectedFromList = (listData.getItemAtPosition(position).toString());
-				/*
+				
 				if(myPlayer != null)
 					myPlayer.stop();
 				play(Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+selectedFromList);
-				*/
+				
 			
 			
 				Intent i = new Intent(MainActivity.this, PlayFile.class);
@@ -104,6 +115,7 @@ public class MainActivity extends Activity{
 			
 			}
 		});
+		*/
 		
 	}// end of onCreate
 	
@@ -142,7 +154,11 @@ public class MainActivity extends Activity{
 		      		      
 		    Toast.makeText(getApplicationContext(), "Stop recording...",
 		    		  Toast.LENGTH_SHORT).show();
-		    getDataFromSDCard();
+		    //getDataFromSDCard();
+		    
+		    Intent i = new Intent(MainActivity.this, PlayFile.class);
+			i.putExtra("fileName", outputFile);
+			startActivity(i);
 		} catch (IllegalStateException e) {
 			//  it is called before start()
 			e.printStackTrace();
@@ -152,6 +168,7 @@ public class MainActivity extends Activity{
 		}
 	}// end of stop method
  
+	/*
 	public void getDataFromSDCard(){
 				
 		List<String> myArrayList = new ArrayList<String>();
@@ -169,6 +186,7 @@ public class MainActivity extends Activity{
 		listData.setAdapter(arrayAdapter);
 		
 	}
+	*/
 	
 	public void play(String fileName){
 		
