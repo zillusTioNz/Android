@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 import android.media.MediaPlayer;
@@ -15,9 +16,14 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -58,9 +64,14 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle saveInstanceState){
 		super.onCreate(saveInstanceState);
 		//addPreferencesFromResource(R.xml.preferences);
+		loadPreferences();
+		init_display();
+	}// end of onCreate
+	
+	private void init_display() {
+		// TODO Auto-generated method stub
 		setContentView(R.layout.activity_main);		
 		txtTime = (TextView)findViewById(R.id.txtTime);
-		
 		// Start Button
 		btnStart = (Button)findViewById(R.id.btnStart);
 		btnStart.setOnClickListener(new OnClickListener() {
@@ -119,8 +130,29 @@ public class MainActivity extends Activity {
 		});
 		*/
 		
-	}// end of onCreate
-	
+	}
+
+	private void loadPreferences() {
+		// TODO Auto-generated method stub
+		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+		String str_value = sharedPreferences.getString("Spinner", "English");
+		Resources res = getResources();
+		// Change locale settings in the app.
+		DisplayMetrics dm = res.getDisplayMetrics();
+		android.content.res.Configuration conf = res.getConfiguration();
+		String lang;
+		String country;
+		if (str_value.contains("Français")) {
+			lang = "fr";
+			country = "FR";	
+		}else {
+			lang = "en";
+			country = "GB";		
+		}
+		conf.locale = new Locale(lang, country);
+		res.updateConfiguration(conf, dm);
+	}
+
 	private void setRecord(String name){
 		outputFile = Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+name+".3gpp";
 				
@@ -251,6 +283,14 @@ public class MainActivity extends Activity {
 	   	default:return super.onOptionsItemSelected(item);
 	   }
    }
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		init_display();
+	    invalidateOptionsMenu();
+		super.onResume();
+	}
 	
 }// end Class
 

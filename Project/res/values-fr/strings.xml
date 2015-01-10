@@ -1,0 +1,24 @@
+<resources>
+
+    <string name="app_name">Project</string>
+    <string name="btnStart">Enregistrer</string>
+    <string name="btnStop">Arreter</string>
+    <string name="txtTime">00:00</string>
+    <color name="orange">#FFBF00</color>
+    <string name="btnPlay">Lecture</string>
+    <string name="btnPause">Pause</string>
+	
+    <string name="action_settings">Paramètres</string>
+    <string name="hello_world">Lecture en cours:</string>
+    <string name="inital_Time">0 min, 0 sec</string>
+
+    <string name="mediaStop">Arreter</string>
+    <string name="enable_update">Enable Updates</string>
+    <string name="save">Sauvegarder</string>
+    <string name="setting">Paramètres</string>
+    <string name="playtitle">Lecture en cours</string>
+
+    <string name="btnPlayList">Liste de lecture</string>
+
+    
+</resources>

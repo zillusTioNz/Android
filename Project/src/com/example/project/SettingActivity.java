@@ -1,20 +1,28 @@
 package com.example.project;
 
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.TextView;
+import android.widget.Spinner;
 
 public class SettingActivity extends Activity implements OnClickListener{
 
-	private CheckBox checkBox;
+	private Spinner Spinner;
 	private Button button;
 
 	@Override
@@ -23,60 +31,74 @@ public class SettingActivity extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setting);
 		setTitle(R.string.setting);
-		
-		checkBox = (CheckBox)findViewById(R.id.chkBoxUpdate);
+
+		Spinner = (Spinner)findViewById(R.id.spinner_language);
 		button = (Button)findViewById(R.id.btnSave);
 		button.setOnClickListener(this);
 		loadSavedPreferences();
-
-		
-		/*SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-		
-		StringBuilder builder = new StringBuilder();
-		
-		builder.append("n" + sharedPrefs.getBoolean("perform_updates", false));
-		builder.append("n" + sharedPrefs.getString("updates_interval", "-1"));
-		builder.append("n" + sharedPrefs.getString("welcome_message", "NULL"));
-		
-		TextView settingsTextView = (TextView) findViewById(R.id.txtView);
-		settingsTextView.setText(builder.toString());*/
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void loadSavedPreferences() {
-		// TODO Auto-generated method stub
 		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-		boolean chkBoxValue = sharedPreferences.getBoolean("chkBoxValue", false);
-		if (chkBoxValue) {
-			checkBox.setChecked(true);
+		final String str_value = sharedPreferences.getString("Spinner", "English");
+		List list_languages = new ArrayList();	
+		list_languages.add("English");
+		list_languages.add("Français");
+		ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, list_languages);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		Spinner.setAdapter(adapter);
+		if (str_value.contains("Français")) {
+			Spinner.setSelection(1);
 		}else {
-			checkBox.setChecked(false);
+			Spinner.setSelection(0);
 		}
-
+		Spinner.setOnItemSelectedListener(new OnItemSelectedListener() 
+		{
+			@Override
+			public void onItemSelected(AdapterView adapter, View v, int postion, long lng) {
+				if (adapter.getItemAtPosition(postion).toString().contains("Français")) {
+					button.setText("Sauvegarder");
+				}else {
+					button.setText("Save");	
+				}
+			} 
+			@Override     
+			public void onNothingSelected(AdapterView<?> parentView) 
+			{}
+		}); 
 	}
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		savePreferences("chkBoxValue", checkBox.isChecked());
+		savePreferences("Spinner", Spinner.getSelectedItem().toString());
 		finish();
 	}
 
-	private void savePreferences(String key, boolean value) {
-		// TODO Auto-generated method stub
+	private void savePreferences(String key, String value) {
 		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 		Editor editor = sharedPreferences.edit();
-		editor.putBoolean(key, value);
+		editor.putString(key, value);
 		editor.commit();
 
-		
-		/*btnBack.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});*/
+		Resources res = getResources();
+		DisplayMetrics dm = res.getDisplayMetrics();
+		android.content.res.Configuration conf = res.getConfiguration();
+
+		String lang;
+		String country;
+		if (value.contains("Français")) {
+			lang = "fr";
+			country = "FR";	
+			button.setText("Sauvegarder");
+		}
+		else {
+			lang = "en";
+			country = "GB";		
+			button.setText("Save");	
+		}
+		conf.locale = new Locale(lang, country);
+		res.updateConfiguration(conf, dm);
 	}
-	
+
 }
