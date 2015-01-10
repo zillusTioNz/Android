@@ -124,8 +124,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.provider.MediaStore.Audio.Playlists;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -139,6 +143,8 @@ public class PlayFile extends Activity {
 	private Handler durationHandler = new Handler();
 	private SeekBar seekbar;
 	private String fileName;
+	private ImageButton delBtn;
+	
 	
 	@Override
 	public void onBackPressed() {
@@ -148,7 +154,7 @@ public class PlayFile extends Activity {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		Intent setIntent = new Intent(this, MainActivity.class);
+		Intent setIntent = new Intent(this, PlayList.class);
 		startActivity(setIntent);
 	}
 
@@ -161,6 +167,9 @@ public class PlayFile extends Activity {
 		setTitle(R.string.playtitle);
 		Intent i = getIntent();
 		fileName =  i.getStringExtra("fileName");
+		
+		delBtn = (ImageButton)findViewById(R.id.delete);
+		delBtn.setEnabled(false);
 		
 		//initialize views
 		initializeViews();
@@ -222,6 +231,9 @@ public class PlayFile extends Activity {
 		timeElapsed = mediaPlayer.getCurrentPosition();
 		seekbar.setProgress((int) timeElapsed);
 		durationHandler.postDelayed(updateSeekBarTime, 100);
+		
+		delBtn = (ImageButton)findViewById(R.id.delete);
+		delBtn.setEnabled(false);
 	}
 
 	//handler to change seekBarTime
@@ -237,6 +249,11 @@ public class PlayFile extends Activity {
 			
 			//repeat yourself that again in 100 miliseconds
 			durationHandler.postDelayed(this, 100);
+			
+			if (timeRemaining==0) {
+				delBtn = (ImageButton)findViewById(R.id.delete);
+				delBtn.setEnabled(true);
+			}
 		}
 	};
 
@@ -279,7 +296,9 @@ public class PlayFile extends Activity {
 		try {
 			File file = new File(fileName);
 			if (file.delete()) {
-				Toast.makeText(getApplicationContext(), "Delete complete", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "Delete complete...", Toast.LENGTH_SHORT).show();
+				Intent i = new Intent(getApplicationContext(), PlayList.class);
+				startActivity(i);
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -287,18 +306,7 @@ public class PlayFile extends Activity {
 	}
 	
 	public void stopPlay(View view){
-		/*try {
-			if (mediaPlayer != null) {
-				mediaPlayer.stop();
-				mediaPlayer.release();
-				
-				seekbar.setProgress((int) finalTime);
-				
-				Toast.makeText(getApplicationContext(), "Stop playing the recording...", Toast.LENGTH_SHORT).show();
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}*/
+		
 		try {
 			mediaPlayer.stop();
 			mediaPlayer = new MediaPlayer();
@@ -311,7 +319,10 @@ public class PlayFile extends Activity {
 			}
 			
 			seekbar.setProgress(0);
-			Toast.makeText(getApplicationContext(), "Stop playing the recording...", Toast.LENGTH_SHORT).show();
+			//Toast.makeText(getApplicationContext(), "Stop playing the recording...", Toast.LENGTH_SHORT).show();
+			
+			delBtn = (ImageButton)findViewById(R.id.delete);
+			delBtn.setEnabled(true);
 			
 		} catch (Exception e) {
 			// TODO: handle exception
