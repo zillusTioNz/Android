@@ -11,15 +11,14 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Now Playing:</string>
     <string name="inital_Time">0 min, 0 sec</string>
-<<<<<<< HEAD
+
     <string name="mediaStop">Stop</string>
     <string name="enable_update">Enable Updates</string>
     <string name="save">Save</string>
     <string name="setting">Setting</string>
     <string name="playtitle">Playing</string>
-=======
+
     <string name="btnPlayList">Play list</string>
->>>>>>> f9082faea59e2606a04f5a3505661249d3edd1da
 
     
 </resources>

@@ -11,11 +11,7 @@
         android:text="@string/enable_update" />
 
     <Button
-<<<<<<< HEAD
         android:id="@+id/btnSave"
-=======
-        android:id="@+id/btnPlayList"
->>>>>>> f9082faea59e2606a04f5a3505661249d3edd1da
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save" />

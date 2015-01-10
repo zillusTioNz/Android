@@ -24,7 +24,6 @@ public class SettingActivity extends Activity implements OnClickListener{
 		setContentView(R.layout.activity_setting);
 		setTitle(R.string.setting);
 		
-<<<<<<< HEAD
 		checkBox = (CheckBox)findViewById(R.id.chkBoxUpdate);
 		button = (Button)findViewById(R.id.btnSave);
 		button.setOnClickListener(this);
@@ -68,8 +67,8 @@ public class SettingActivity extends Activity implements OnClickListener{
 		Editor editor = sharedPreferences.edit();
 		editor.putBoolean(key, value);
 		editor.commit();
-=======
-		btnBack = (Button)findViewById(R.id.btnPlayList);
+
+		
 		/*btnBack.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -78,7 +77,6 @@ public class SettingActivity extends Activity implements OnClickListener{
 				finish();
 			}
 		});*/
->>>>>>> f9082faea59e2606a04f5a3505661249d3edd1da
 	}
 	
 }
