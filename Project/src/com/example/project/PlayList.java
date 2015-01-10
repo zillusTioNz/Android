@@ -50,6 +50,13 @@ public class PlayList extends Activity{
 		
 	}
 	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		Intent setIntent = new Intent(this, MainActivity.class);
+		startActivity(setIntent);
+	}
+
 	public void getDataFromSDCard(){
 		
 		List<String> myArrayList = new ArrayList<String>();

@@ -36,15 +36,6 @@
             android:text="@string/txtTime"
             android:textSize="40sp" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="30dp"
-            android:src="@drawable/mic" />
-
         <Button
             android:id="@+id/btnStart"
             android:layout_width="wrap_content"
@@ -53,6 +44,14 @@
             android:layout_below="@+id/imageView2"
             android:text="@string/btnStart"
             android:width="150dp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/txtTime"
+            android:src="@drawable/mic" />
 
     </RelativeLayout>
 
