@@ -42,7 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/txtTime"
-            android:layout_marginTop="15dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="16dp"
             android:text="@string/btnStart"
             android:width="150dp" />
 
@@ -50,7 +51,7 @@
             android:id="@+id/btnStop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignLeft="@+id/btnStart"
             android:layout_below="@+id/btnStart"
             android:text="@string/btnStop"
             android:width="150dp" />

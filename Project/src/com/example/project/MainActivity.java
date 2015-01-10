@@ -135,6 +135,10 @@ public class MainActivity extends Activity {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy_MM_dd_HHmmss");
 		String currentDateandTime = sdf.format(new Date());
 		setRecord(currentDateandTime.toString());
+		
+		Toast.makeText(getApplicationContext(), "Start recording...",
+	    		  Toast.LENGTH_SHORT).show();
+		
 		try{
 			myRecorder.prepare();
 	        myRecorder.start();
@@ -154,8 +158,8 @@ public class MainActivity extends Activity {
 		    myRecorder.release();
 		    myRecorder  = null;
 		      		      
-		    Toast.makeText(getApplicationContext(), "Stop recording...",
-		    		  Toast.LENGTH_SHORT).show();
+		    /*Toast.makeText(getApplicationContext(), "Stop recording...",
+		    		  Toast.LENGTH_SHORT).show();*/
 		    //getDataFromSDCard();
 		    
 		    Intent i = new Intent(MainActivity.this, PlayFile.class);
