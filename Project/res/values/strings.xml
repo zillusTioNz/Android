@@ -23,6 +23,9 @@
     <string name="cancel">Cancel</string>
     <string name="language">Language</string>
     <string name="playlist_title">Playlist</string>
+    <string name="t_start_rec">Start recording...</string>
+    <string name="t_del">Deleted file complete</string>
+    <string name="t_back">Program is running, please press Stop...</string>
 
     
 </resources>

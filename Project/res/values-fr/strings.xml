@@ -20,6 +20,9 @@
     <string name="ok">OK</string>
     <string name="cancel">Annuler</string>
     <string name="playlist_title">Jouerliste</string>
+    <string name="t_start_rec">Démarrer le recodage</string>
+    <string name="t_del">Fichier supprimé complet</string>
+    <string name="t_back">Exécution du programme</string>
 
     
 </resources>

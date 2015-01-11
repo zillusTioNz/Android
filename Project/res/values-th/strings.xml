@@ -23,6 +23,9 @@
     <string name="cancel">ไม่ใช่</string>
     <string name="language">ภาษา</string>
     <string name="playlist_title">เพลย์ลิสท์</string>
+    <string name="t_start_rec">เริ่มการบันทึกเสียง</string>
+    <string name="t_del">ลบไฟล์เรียบร้อยแล้ว</string>
+    <string name="t_back">กำลังบันทึกเสียงอยู่, กรุณากดปุ่มหยุด</string>
 
     
 </resources>

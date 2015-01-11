@@ -57,6 +57,8 @@ public class MainActivity extends Activity {
 	long timeInMilliseconds = 0L;
 	long timeSwapBuff = 0L;
 	long updatedTime = 0L;
+	String tmpTime;
+	String tmpBtn;
 	
 	//============================== Method ===================================
 	
@@ -68,6 +70,18 @@ public class MainActivity extends Activity {
 		init_display();
 	}// end of onCreate
 	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		btnStop = (Button)findViewById(R.id.btnStop);
+		if (btnStop.isEnabled()) {
+			Toast.makeText(getApplicationContext(), R.string.t_back,
+		    		  Toast.LENGTH_SHORT).show();
+		}else {
+			finish();
+		}
+	}
+
 	private void init_display() {
 		// TODO Auto-generated method stub
 		setContentView(R.layout.activity_main);		
@@ -154,7 +168,7 @@ public class MainActivity extends Activity {
 		String currentDateandTime = sdf.format(new Date());
 		setRecord(currentDateandTime.toString());
 		
-		Toast.makeText(getApplicationContext(), "Start recording...",
+		Toast.makeText(getApplicationContext(), R.string.t_start_rec,
 	    		  Toast.LENGTH_SHORT).show();
 		
 		try{
@@ -194,26 +208,6 @@ public class MainActivity extends Activity {
 		btnStop.setEnabled(false);
 		
 	}// end of stop method
- 
-	/*
-	public void getDataFromSDCard(){
-				
-		List<String> myArrayList = new ArrayList<String>();
-		
-		File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath().toString());
-		File[] filelist = dir.listFiles();
-				
-		for (int i = 0; i < filelist.length; i++) {
-			if(filelist[i].getName().endsWith(".3gpp"))
-				myArrayList.add(filelist[i].getName());
-		}
-		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
-				myArrayList );
-		
-		listData.setAdapter(arrayAdapter);
-		
-	}
-	*/
 	
 	public void play(String fileName){
 		

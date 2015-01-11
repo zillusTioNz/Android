@@ -309,7 +309,7 @@ public class PlayFile extends Activity implements Dialog.dialogDoneListener{
 		try {
 			File file = new File(fileName);
 			if (file.delete()) {
-				Toast.makeText(getApplicationContext(), "Deleted file complete...", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), R.string.t_del, Toast.LENGTH_SHORT).show();
 				Intent i = new Intent(getApplicationContext(), PlayList.class);
 				startActivity(i);
 			}
@@ -341,4 +341,22 @@ public class PlayFile extends Activity implements Dialog.dialogDoneListener{
 			// TODO: handle exception
 		}
 	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		// TODO Auto-generated method stub
+		outState.putInt("timeRemaining", mediaPlayer.getCurrentPosition());
+	    mediaPlayer.pause();
+		super.onSaveInstanceState(outState);
+	}
+
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		int pos = savedInstanceState.getInt("timeRemaining");
+	    mediaPlayer.seekTo(pos);
+		super.onRestoreInstanceState(savedInstanceState);
+	}
+	
+	
 }
