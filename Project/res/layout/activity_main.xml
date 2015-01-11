@@ -4,56 +4,52 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/txtTime"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content"
+    	android:gravity="center"
+        android:text="@string/txtTime"
+        android:textSize="40sp" />
 
-        <Button
-            android:id="@+id/btnStop"
-            android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mic" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/btnStart"
-            android:layout_alignBottom="@+id/btnStart"
-            android:layout_alignParentRight="true"
-            android:enabled="false"
-            android:text="@string/btnStop"
-            android:width="150dp" />
-
-        <Button
-            android:id="@+id/btnPlayList"
-            android:layout_width="wrap_content"
+            android:layout_weight="1" >
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btnStart"
+                android:width="150dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/btnStart"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/btnStop"
-            android:text="@string/btnPlayList" />
+            android:layout_weight="1" >
 
-        <TextView
-            android:id="@+id/txtTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:text="@string/txtTime"
-            android:textSize="40sp" />
+            <Button
+                android:id="@+id/btnStop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="@string/btnStop"
+                android:width="150dp" />
 
-        <Button
-            android:id="@+id/btnStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/imageView2"
-            android:text="@string/btnStart"
-            android:width="150dp" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/txtTime"
-            android:src="@drawable/mic" />
-
-    </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnPlayList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnPlayList" />
 
 </LinearLayout>

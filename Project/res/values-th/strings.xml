@@ -1,0 +1,31 @@
+<resources>
+
+    <string name="app_name">Sound Recorder</string>
+    <string name="btnStart">บันทึกเสียง</string>
+    <string name="btnStop">หยุด</string>
+    <string name="txtTime">00:00</string>
+    <color name="orange">#FFBF00</color>
+    <string name="btnPlay">Play</string>
+    <string name="btnPause">Puase</string>
+	
+    <string name="action_settings">ตั้งค่า</string>
+    <string name="hello_world">Now Playing:</string>
+    <string name="inital_Time">0 min, 0 sec</string>
+
+    <string name="mediaStop">Stop</string>
+    <string name="enable_update">Enable Updates</string>
+    <string name="save">บันทึก</string>
+    <string name="setting">ตั้งค่า</string>
+    <string name="playtitle">กำลังเล่น</string>
+    <string name="btnPlayList">เพลย์ลิสท์</string>
+    <string name="dialog">ต้องการลบใช่หรือไม่?</string>
+    <string name="ok">ใช่</string>
+    <string name="cancel">ไม่ใช่</string>
+    <string name="language">ภาษา</string>
+    <string name="playlist_title">เพลย์ลิสท์</string>
+    <string name="t_start_rec">เริ่มการบันทึกเสียง</string>
+    <string name="t_del">ลบไฟล์เรียบร้อยแล้ว</string>
+    <string name="t_back">กำลังบันทึกเสียงอยู่, กรุณากดปุ่มหยุด</string>
+
+    
+</resources>

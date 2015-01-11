@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 import android.media.MediaPlayer;
@@ -15,9 +16,14 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -51,6 +57,8 @@ public class MainActivity extends Activity {
 	long timeInMilliseconds = 0L;
 	long timeSwapBuff = 0L;
 	long updatedTime = 0L;
+	String tmpTime;
+	String tmpBtn;
 	
 	//============================== Method ===================================
 	
@@ -58,11 +66,30 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle saveInstanceState){
 		super.onCreate(saveInstanceState);
 		//addPreferencesFromResource(R.xml.preferences);
+		loadPreferences();
+		init_display();
+	}// end of onCreate
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		btnStop = (Button)findViewById(R.id.btnStop);
+		if (btnStop.isEnabled()) {
+			Toast.makeText(getApplicationContext(), R.string.t_back,
+		    		  Toast.LENGTH_SHORT).show();
+		}else {
+			finish();
+		}
+	}
+
+	private void init_display() {
+		// TODO Auto-generated method stub
 		setContentView(R.layout.activity_main);		
 		txtTime = (TextView)findViewById(R.id.txtTime);
-		
-		// Start Button
+		//Button
 		btnStart = (Button)findViewById(R.id.btnStart);
+		btnStop = (Button)findViewById(R.id.btnStop);
+		
 		btnStart.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -71,10 +98,12 @@ public class MainActivity extends Activity {
 				customHandler.postDelayed(updateTimerThread, 0);
 				
 				startRecord(v);
+				btnStart.setEnabled(false);
+				btnStop.setEnabled(true);
 			}
 		});
 		
-		btnStop = (Button)findViewById(R.id.btnStop);
+		
 		btnStop.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -84,6 +113,8 @@ public class MainActivity extends Activity {
 	  			customHandler.removeCallbacks(updateTimerThread);
 	  			
 				stopRecord(v);
+				btnStart.setEnabled(true);
+				btnStop.setEnabled(false);
 			}
 		});
 		
@@ -96,31 +127,32 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		/*
-		listData = (ListView) findViewById(R.id.listData);
-		getDataFromSDCard();
-		listData.setOnItemClickListener(new OnItemClickListener() {
-		public void onItemClick(AdapterView<?> parent, View view,int position, long id) 
-			{
-			
-				String selectedFromList = (listData.getItemAtPosition(position).toString());
-				
-				if(myPlayer != null)
-					myPlayer.stop();
-				play(Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+selectedFromList);
-				
-			
-			
-				Intent i = new Intent(MainActivity.this, PlayFile.class);
-				i.putExtra("fileName", Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+selectedFromList);
-				startActivity(i);
-			
-			}
-		});
-		*/
-		
-	}// end of onCreate
-	
+	}
+
+	private void loadPreferences() {
+		// TODO Auto-generated method stub
+		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+		String str_value = sharedPreferences.getString("Spinner", "English");
+		Resources res = getResources();
+		// Change locale settings in the app.
+		DisplayMetrics dm = res.getDisplayMetrics();
+		android.content.res.Configuration conf = res.getConfiguration();
+		String lang;
+		String country;
+		if (str_value.contains("Français")) {
+			lang = "fr";
+			country = "FR";	
+		}else if (str_value.contains("ไทย")) {
+			lang = "th";
+			country = "TH";	
+		}else {
+			lang = "en";
+			country = "GB";		
+		}
+		conf.locale = new Locale(lang, country);
+		res.updateConfiguration(conf, dm);
+	}
+
 	private void setRecord(String name){
 		outputFile = Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+name+".3gpp";
 				
@@ -136,7 +168,7 @@ public class MainActivity extends Activity {
 		String currentDateandTime = sdf.format(new Date());
 		setRecord(currentDateandTime.toString());
 		
-		Toast.makeText(getApplicationContext(), "Start recording...",
+		Toast.makeText(getApplicationContext(), R.string.t_start_rec,
 	    		  Toast.LENGTH_SHORT).show();
 		
 		try{
@@ -150,9 +182,6 @@ public class MainActivity extends Activity {
 	        // prepare() fails
 	        e.printStackTrace();
 	    }
-		btnStart.setEnabled(false);
-		btnStop.setEnabled(true);
-		
 	}// end of start method
 	
 	public void stopRecord(View v){
@@ -179,26 +208,6 @@ public class MainActivity extends Activity {
 		btnStop.setEnabled(false);
 		
 	}// end of stop method
- 
-	/*
-	public void getDataFromSDCard(){
-				
-		List<String> myArrayList = new ArrayList<String>();
-		
-		File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath().toString());
-		File[] filelist = dir.listFiles();
-				
-		for (int i = 0; i < filelist.length; i++) {
-			if(filelist[i].getName().endsWith(".3gpp"))
-				myArrayList.add(filelist[i].getName());
-		}
-		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
-				myArrayList );
-		
-		listData.setAdapter(arrayAdapter);
-		
-	}
-	*/
 	
 	public void play(String fileName){
 		
@@ -258,6 +267,14 @@ public class MainActivity extends Activity {
 	   	default:return super.onOptionsItemSelected(item);
 	   }
    }
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		init_display();
+	    invalidateOptionsMenu();
+		super.onResume();
+	}
 	
 }// end Class
 
